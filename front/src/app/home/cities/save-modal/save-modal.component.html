@@ -1,0 +1,56 @@
+<!-- BUTTON MODAL -->
+<button type="button" (click)="showModalDialog()" pButton icon="pi pi-plus-circle" label="Add City"
+    class="mr-2 ui-button-primary"></button>
+<!-- MODAL -->
+<p-dialog header="Save Confirm" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" class="form-save">
+    <form [formGroup]="citiesForm" (ngSubmit)="saveCity()" class="mt-4">
+        <div class="ui-fluid">
+            <div class="p-field">
+                <label for="firstname1">City</label>
+                <input id="firstname1" class="form-input" type="text" pInputText formControlName="city" required>
+                <!-- message -->
+                <div class="alert-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+                    <div *ngIf="city.errors.required" class="container-error-message">
+                        required city
+                    </div>
+                    <div *ngIf="city.errors.minlength" class="container-error-message">
+                        Must be at least 3 characters
+                    </div>
+                </div>
+            </div>
+            <div class="p-field">
+                <label for="lastname2">Country</label>
+                <input id="lastname2" type="text" class="form-input" pInputText formControlName="country" required>
+                <!-- message -->
+                <div class="alert-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
+                    <div *ngIf="country.errors.required" class="container-error-message">
+                        required country
+                    </div>
+                    <div *ngIf="country.errors.minlength" class="container-error-message">
+                        Must be at least 3 characters
+                    </div>
+                </div>
+            </div>
+            <div class="p-field">
+                <label for="lastname3">Continent</label>
+                <input id="lastname3" type="text" class="form-input" pInputText formControlName="continent" required>
+                <!-- message -->
+                <div class="alert-danger" *ngIf="continent.invalid && (continent.dirty || continent.touched)">
+                    <div *ngIf="continent.errors.required" class="container-error-message">
+                        required continent
+                    </div>
+                    <div *ngIf="continent.errors.minlength" class="container-error-message">
+                        Must be at least 3 characters
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer class="textt-end">
+            <button type="button" pButton icon="pi pi-times" (click)="displayModal=false" label="Cancel"
+                class="ui-button-secondary mt-4"></button>
+            <button type="submit" pButton icon="pi pi-check" label="Save" class="ml-3 ui-button-primary"
+                [disabled]="!citiesForm.valid"></button>
+        </p-footer>
+    </form>
+</p-dialog>

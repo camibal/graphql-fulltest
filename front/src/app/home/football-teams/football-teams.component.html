@@ -1,0 +1,32 @@
+<h1 class="mt-4 text-light">Football Teams</h1>
+<div class="p-grid p-justify-end mr-2 mt-3 mb-3">
+    <app-save-team (send)="getEvent($event)"></app-save-team>
+</div>
+<div class="scrollmenu">
+    <p-table [value]="getTeamss | async" class="table-cities">
+        <ng-template pTemplate="header">
+            <tr>
+                <th scope="col">EQUIPMENT</th>
+                <th scope="col">LIGUE</th>
+                <th scope="col">COUNTRY</th>
+                <th scope="col">ACTION</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-teams>
+            <tr>
+                <td>{{teams.equipment}}</td>
+                <td>{{teams.ligue}}</td>
+                <td>{{teams.country}}</td>
+                <td>
+                    <div class="p-grid p-justify-center mr-2 mt-3">
+                        <app-update-team [teams]="teams" (send)="getEvent($event)" class="p-col-3">
+                        </app-update-team>
+
+                        <app-delete-team [teams]="teams" (send)="getEvent($event)" class="p-col-3">
+                        </app-delete-team>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

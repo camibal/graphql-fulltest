@@ -1,0 +1,17 @@
+<!-- BUTTON MODAL -->
+<button type="button" (click)="showModalDialog()" pButton icon="pi pi-trash" class="" label=""
+    class="mr-5 ui-button-danger">
+</button>
+<!-- MODAL -->
+<p-dialog header="Confirm" [(visible)]="displayModal" [modal]="true" [style]="{width: '20vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <h5>Are you sure?</h5>
+    <p-footer class="textt-end">
+        <button type="button" pButton icon="pi pi-times" (click)="displayModal=false" label="Cancel"
+            class="ui-button-secondary mt-4">
+        </button>
+        <button type="button" pButton icon="pi pi-check" label="Delete" class="ml-3 ui-button-danger"
+            (click)="deleteTeam()">
+        </button>
+    </p-footer>
+</p-dialog>

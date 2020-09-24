@@ -1,0 +1,28 @@
+<!-- BUTTON MODAL -->
+<button type="button" (click)="showModalDialog()" pButton icon="pi pi-pencil" label="" class="ui-button-success"></button>
+<!-- MODAL -->
+<p-dialog header="Update Confirm" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <form novalidate  #citiesForm="ngForm" class="mt-4">
+        <div class="ui-fluid">
+            <div class="p-field">
+                <label for="firstname1">City</label>
+                <input id="firstname1" class="form-input" type="text" pInputText name="city" [(ngModel)]="cities.city" required>
+            </div>
+            <div class="p-field">
+                <label for="lastname2">Country</label>
+                <input id="lastname2" type="text" class="form-input" pInputText name="country" [(ngModel)]="cities.country" required>
+            </div>
+            <div class="p-field">
+                <label for="lastname3">Continent</label>
+                <input id="lastname3" type="text" class="form-input" pInputText name="continent" [(ngModel)]="cities.continent" required>
+            </div>
+        </div>
+        <p-footer class="textt-end">
+            <button type="button" pButton icon="pi pi-times" (click)="closedModal()" label="Cancel"
+                class="ui-button-secondary mt-4">
+            </button>
+            <button type="button" pButton icon="pi pi-check" (click)="updateCity()" label="Update" class="ml-3 ui-button-success" [disabled]="!citiesForm.valid"></button>
+        </p-footer>
+    </form>
+</p-dialog>

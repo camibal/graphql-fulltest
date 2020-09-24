@@ -1,0 +1,31 @@
+<h1 class="mt-4 text-light">Cities</h1>
+<div class="p-grid p-justify-end mr-2 mt-3 mb-3">
+    <app-save-modal (send)="getEvent($event)"></app-save-modal>
+</div>
+<div class="scrollmenu">
+    <p-table [value]="cities | async" class="table-cities">
+        <ng-template pTemplate="header">
+            <tr>
+                <th scope="col">CITY</th>
+                <th scope="col">COUNTRY</th>
+                <th scope="col">CONTINENT</th>
+                <th scope="col">ACTION</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cities>
+            <tr>
+                <td>{{cities.city}}</td>
+                <td>{{cities.country}}</td>
+                <td>{{cities.continent}}</td>
+                <td>
+                    <div class="p-grid p-justify-center mr-2 mt-3">
+                        <app-update-modal [cities]="cities" (send)="getEvent($event)" class="p-col-3">
+                        </app-update-modal>
+                        <app-delete-modal [cities]="cities" (send)="getEvent($event)" class="p-col-3">
+                        </app-delete-modal>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
